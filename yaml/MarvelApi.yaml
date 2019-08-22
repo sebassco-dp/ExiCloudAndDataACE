@@ -1,0 +1,56 @@
+---
+swagger: "2.0"
+info:
+  x-ibm-name: "marvelapi"
+  title: "MarvelApi"
+  version: "1.1.0"
+  description: "# Marvel API for IBM Cloud & API Connect!\n## Be a good API citizen...\n\
+    \n\nAPI para consumo de participantes del Coding Space de ExiSoft en IBM Cloud\
+    \ & Data Argentina 2019\n\n###### *_Data provided by Marvel. © 2014 Marvel_*"
+  contact:
+    url: "http://exisoft.com.ar/equipo/"
+    name: "Sebastian Gomez Battista"
+    email: "sgomezbattista@exisoft.com.ar"
+schemes:
+- "https"
+host: "gateway.marvel.com"
+basePath: "/cloud/data/marvel"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+securityDefinitions:
+  clientIdHeader:
+    type: "apiKey"
+    in: "header"
+    name: "X-IBM-Client-Id"
+security:
+- clientIdHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  phase: "realized"
+paths:
+  /heroes:
+    get:
+      responses:
+        200:
+          description: "200 OK"
+          schema:
+            type: "object"
+      parameters:
+      - name: "offset"
+        type: "integer"
+        required: false
+        in: "query"
+        format: "int32"
+      - name: "name"
+        type: "string"
+        required: false
+        in: "query"
+tags: []
+x-ibm-endpoints:
+- endpointUrl: "https://api.us-south.apiconnect.appdomain.cloud/exisoft-exidesarrollosinternos/marvelapi"
+  type:
+  - "production"
+  - "development"
